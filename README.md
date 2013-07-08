@@ -17,3 +17,9 @@ Install
 
 2. python ds.pyw
 
+
+Screenshot
+==========
+
+![Screenshot of Diaosi] (https://raw.github.com/fxsjy/diaosi/master/screenshot.png "Diaosi")
+
