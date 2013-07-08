@@ -7,11 +7,12 @@ Install
 
 # install sdict module
 
-```pip install sdict
+```
+    pip install sdict
 
     or
 
-   easy_install sdict
+    easy_install sdict
 ```
 
 # python ds.pyw
