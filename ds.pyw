@@ -41,7 +41,7 @@ for line in open(dic_name,"rb"):
     chn_word = ' '.join(chn_word)
     index[en_word] = chn_word
     if en_word != low_word:
-        index[low_word] = chn_word
+        index[low_word+";"+en_word+";"] = chn_word
 
 
 
@@ -49,6 +49,7 @@ def on_press(event):
     global index,E1,T1
     word = E1.get().encode('utf-8')
     rel_words = index.prefix(word,limit=30)
+    rel_words = [x if not x.endswith(';') else x.split(';')[1] for x in rel_words]
     if len(rel_words)==0:
         cor_words = edits1(word)
         result = "\n".join("? " +w for w in cor_words if w in index)
@@ -63,16 +64,16 @@ def on_press(event):
 root = Tk()
 root.title("Diaosi: A dictionary made by a diaosi, for the diaosi")
 root.resizable(0,0)
-frame1 = Frame(root,width=400,height=25)
+frame1 = Frame(root,width=480,height=25)
 frame1.pack_propagate(0)
 frame1.pack()
-frame2 = Frame(root,width=400,height=480)
+frame2 = Frame(root,width=480,height=480)
 frame2.pack_propagate(0)
 frame2.pack()
 
 L1 = Label(frame1,text=">>")
 L1.pack(side=LEFT)
-E1 = Entry(frame1,width=30,font=tkFont.Font(size=16,weight='bold'))
+E1 = Entry(frame1,width=60,font=tkFont.Font(size=16,weight='bold'))
 E1.pack(side=RIGHT,expand=True)
 E1.focus_set()
 T1 = Text(frame2,height=480)
