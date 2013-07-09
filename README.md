@@ -2,6 +2,12 @@ Diaosi
 ======
 A dictionary made by a diaosi, for the diaosi
 
+Feature
+=======
+1. up to 100,000 words int plain text file
+2. quick loading and searching
+3. cross platform
+
 Install
 =======
 
@@ -14,8 +20,9 @@ Install
     
         easy_install sdict
         
+2. git clone https://github.com/fxsjy/diaosi
 
-2. python ds.pyw
+3. python ds.pyw
 
 
 Screenshot
