@@ -4,13 +4,21 @@ A dictionary made by a diaosi, for the diaosi
 
 Feature
 =======
-1. up to 100,000 words int plain text file
+1. 100,000 words in a plain text file
 2. quick loading and searching
 3. spelling correction
 4. cross platform
 
-Install
-=======
+
+Install Tutorial For Windows User
+=================================
+1. Download the zip file: https://raw.github.com/fxsjy/diaosi/master/release/ds_0.1_win32.zip
+2. unzip ds_0.1_win32.zip
+3. click ds.exe
+
+
+Install Tutorial For Geek
+=========================
 
 1. install sdict module
         
