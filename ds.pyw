@@ -50,15 +50,19 @@ def on_press(event):
     word = E1.get().encode('utf-8')
     rel_words = index.prefix(word,limit=30)
     rel_words = [x if not x.endswith(';') else x.split(';')[1] for x in rel_words]
+    result = ""
     if len(rel_words)==0:
-        cor_words = edits1(word)
-        result = "\n".join("? " +w for w in cor_words if w in index)
+        if " " in word: # due to more than one word
+            rel_words = index.prefix(word.split(' ')[-1],limit=30) # use the last word
+            rel_words = [x if not x.endswith(';') else x.split(';')[1] for x in rel_words]
+            result = "\n".join(w + ": "+index[w] for w in rel_words)
+        else: # due to spelling error
+            cor_words = edits1(word)
+            result = "\n".join("? " +w for w in cor_words if w in index)
     else:
         result = "\n".join(w + ": "+index[w] for w in rel_words)
     T1.delete(1.0,END)
     T1.insert(END,result)
-    
-        
 
 
 root = Tk()
