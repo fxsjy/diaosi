@@ -68,7 +68,11 @@ def on_press(event):
 root = Tk()
 root.title("Diaosi: A dictionary made by a diaosi, for the diaosi")
 root.resizable(0,0)
-root.wm_iconbitmap(os.path.normpath(os.path.join(os.getcwd(),_localDir,'icon')))
+try:
+    root.wm_iconbitmap(os.path.normpath(os.path.join(os.getcwd(),_localDir,'icon')))
+except:
+    pass
+
 
 frame1 = Frame(root,width=480,height=25)
 frame1.pack_propagate(0)
