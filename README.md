@@ -6,7 +6,8 @@ Feature
 =======
 1. up to 100,000 words int plain text file
 2. quick loading and searching
-3. cross platform
+3. spelling correction
+4. cross platform
 
 Install
 =======
