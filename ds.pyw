@@ -16,7 +16,7 @@ def current_file_directory():
                 caller_file = inspect.stack()[1][1]     # function caller's filename
                 return os.path.abspath(os.path.dirname(caller_file))# return function caller's file's directory
 
-def edits1(W):
+def edits1(W): #set of words with edit-distance = 1 
     N = len(W)
     splits = [(W[:i],W[i:]) for i in xrange(N)]
     deletes = [ x+y[1:] for x,y in splits if y]
@@ -43,27 +43,27 @@ for line in open(dic_name,"rb"):
     if en_word != low_word:
         index[low_word+";"+en_word+";"] = chn_word
 
-
-
-def on_press(event):
-    global index,E1,T1
-    word = E1.get().encode('utf-8')
+def lookup_result(word):
+    result = ""
     rel_words = index.prefix(word,limit=30)
     rel_words = [x if not x.endswith(';') else x.split(';')[1] for x in rel_words]
     result = ""
     if len(rel_words)==0:
         if " " in word: # due to more than one word
-            rel_words = index.prefix(word.split(' ')[-1],limit=30) # use the last word
-            rel_words = [x if not x.endswith(';') else x.split(';')[1] for x in rel_words]
-            result = "\n".join(w + ": "+index[w] for w in rel_words)
+            return lookup_result(word.split(' ')[-1]) # use the last word
         else: # due to spelling error
             cor_words = edits1(word)
             result = "\n".join("? " +w for w in cor_words if w in index)
     else:
         result = "\n".join(w + ": "+index[w] for w in rel_words)
+    return result
+
+def on_press(event):
+    global index,E1,T1
+    word = E1.get().encode('utf-8')
+    result = lookup_result(word)
     T1.delete(1.0,END)
     T1.insert(END,result)
-
 
 root = Tk()
 root.title("Diaosi: A dictionary made by a diaosi, for the diaosi")
