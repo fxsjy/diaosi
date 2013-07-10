@@ -12,9 +12,14 @@ Feature
 
 Install Tutorial For Windows User
 =================================
-1. Download the zip file: https://raw.github.com/fxsjy/diaosi/master/release/ds_0.1_win32.zip
+1. Download the zip file: https://github.com/fxsjy/diaosi/raw/master/release/ds_0.2_win32.zip
 2. unzip ds_0.1_win32.zip
 3. click ds.exe
+
+Shortcut
+===========
+1. Ald+d: focus on the input box
+2. ESC: clean the input box
 
 
 Install Tutorial For Geek
