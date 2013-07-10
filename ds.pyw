@@ -3,6 +3,7 @@ import sdict
 import os
 import string
 import tkFont
+#import time
 
 alphabets='abcdefghijklmnopqrstuvwxyz'
 
@@ -25,23 +26,29 @@ def edits1(W): #set of words with edit-distance = 1
     inserts =  [a + c + b for a,b in splits for c in alphabets]
     return set(deletes+trans+replaces+inserts)
     
-index = sdict.Dict()
 _localDir=current_file_directory()
 
 _curpath=os.path.normpath(os.path.join(os.getcwd(),_localDir))
         
 dic_name = os.path.join(_curpath,"endict.txt")
 
+#t1 =  time.time()
+
+dic_list = []
 for line in open(dic_name,"rb"):
-    #print line
     tup = line.rstrip().split('\t')
     en_word = tup[0]
     chn_word = tup[1:]
     low_word= en_word.lower()
     chn_word = ' '.join(chn_word)
-    index[en_word] = chn_word
+    dic_list.append((en_word,chn_word))
     if en_word != low_word:
-        index[low_word+";"+en_word+";"] = chn_word
+        dic_list.append((low_word+";"+en_word+";",chn_word))
+
+
+index = sdict.Dict(dic_list)
+
+#print "loading cost: ", time.time() -t1
 
 def lookup_result(word):
     result = ""

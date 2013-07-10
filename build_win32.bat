@@ -1,0 +1,1 @@
+cxfreeze -OO -c --base-name=Win32GUI ds.pyw --icon icon
