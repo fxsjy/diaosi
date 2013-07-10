@@ -65,6 +65,15 @@ def on_press(event):
     T1.delete(1.0,END)
     T1.insert(END,result)
 
+def on_alt_d(event):
+	global E1
+	E1.focus_set()
+	E1.select_range(0, END)
+
+def on_esc(event):
+	global E1
+	E1.delete(0, END)
+
 root = Tk()
 root.title("Diaosi: A dictionary made by a diaosi, for the diaosi")
 root.resizable(0,0)
@@ -90,6 +99,8 @@ T1 = Text(frame2,height=480)
 T1.pack(expand=True)
 
 E1.bind("<KeyRelease>",on_press)
+root.bind("<Alt-d>",on_alt_d)
+root.bind("<Escape>",on_esc)
 
 if __name__ == "__main__":
     root.mainloop()
